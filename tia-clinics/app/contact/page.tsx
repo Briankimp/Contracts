@@ -207,9 +207,10 @@ export default function ContactPage() {
                 <CardContent className="p-0">
                   <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
                     <img
-                      src="/placeholder.svg?height=400&width=600"
+                      src="/images/gate.webp"
                       alt="TIA Clinics Location"
                       className="w-full h-full object-cover"
+                      style={{ objectPosition: 'center 40%' }}
                     />
                   </div>
                   <div className="p-6 space-y-4">

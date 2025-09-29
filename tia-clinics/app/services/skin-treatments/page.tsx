@@ -1,32 +1,57 @@
-import type { Metadata } from "next"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { ArrowRight, Clock, Star, CheckCircle, Droplets, Sparkles, Users } from "lucide-react"
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
+  ArrowRight,
+  Clock,
+  Star,
+  CheckCircle,
+  Droplets,
+  Sparkles,
+  Users,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Skin Treatments - HydraFacial & Advanced Skincare | TIA Clinics",
   description:
     "Transform your skin with HydraFacial, chemical peels, and advanced skincare treatments at TIA Clinics Nairobi. Expert dermatological care for glowing, healthy skin.",
-}
+};
 
 const treatments = [
   {
     name: "HydraFacial",
-    description: "Revolutionary 3-in-1 treatment that cleanses, extracts, and hydrates for instant glow",
+    description:
+      "Revolutionary 3-in-1 treatment that cleanses, extracts, and hydrates for instant glow",
     duration: "45-60 minutes",
     price: "From KES 15,000",
-    benefits: ["Deep cleansing", "Instant hydration", "Improved texture", "Reduced pores"],
+    benefits: [
+      "Deep cleansing",
+      "Instant hydration",
+      "Improved texture",
+      "Reduced pores",
+    ],
     image: "/placeholder.svg?height=300&width=400",
   },
   {
     name: "Chemical Peels",
-    description: "Professional-grade peels to address acne, pigmentation, and skin texture",
+    description:
+      "Professional-grade peels to address acne, pigmentation, and skin texture",
     duration: "30-45 minutes",
     price: "From KES 12,000",
-    benefits: ["Acne reduction", "Even skin tone", "Smoother texture", "Reduced scarring"],
+    benefits: [
+      "Acne reduction",
+      "Even skin tone",
+      "Smoother texture",
+      "Reduced scarring",
+    ],
     image: "/placeholder.svg?height=300&width=400",
   },
   {
@@ -34,18 +59,29 @@ const treatments = [
     description: "Comprehensive acne management with medical-grade treatments",
     duration: "60-90 minutes",
     price: "From KES 18,000",
-    benefits: ["Active acne control", "Scar prevention", "Oil regulation", "Pore refinement"],
+    benefits: [
+      "Active acne control",
+      "Scar prevention",
+      "Oil regulation",
+      "Pore refinement",
+    ],
     image: "/placeholder.svg?height=300&width=400",
   },
   {
     name: "Skin Brightening",
-    description: "Advanced treatments to reduce pigmentation and achieve radiant skin",
+    description:
+      "Advanced treatments to reduce pigmentation and achieve radiant skin",
     duration: "45-75 minutes",
     price: "From KES 20,000",
-    benefits: ["Reduced dark spots", "Even complexion", "Brighter skin", "Sun damage repair"],
+    benefits: [
+      "Reduced dark spots",
+      "Even complexion",
+      "Brighter skin",
+      "Sun damage repair",
+    ],
     image: "/placeholder.svg?height=300&width=400",
   },
-]
+];
 
 const faqs = [
   {
@@ -73,7 +109,7 @@ const faqs = [
     answer:
       "Most clients experience immediate improvement in skin texture and glow. Some treatments may cause mild redness that subsides within hours. We provide detailed aftercare instructions.",
   },
-]
+];
 
 export default function SkinTreatmentsPage() {
   return (
@@ -83,11 +119,17 @@ export default function SkinTreatmentsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="animate-fade-in-up">
-              <Badge className="mb-4 bg-primary text-primary-foreground">Advanced Skincare</Badge>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">Transform Your Skin</h1>
+              <Badge className="mb-4 bg-primary text-primary-foreground">
+                Advanced Skincare
+              </Badge>
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
+                Transform Your Skin
+              </h1>
               <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
-                Discover radiant, healthy skin with our advanced facial treatments. From HydraFacial to chemical peels,
-                our medical-grade skincare solutions address all your skin concerns with immediate, visible results.
+                Discover radiant, healthy skin with our advanced facial
+                treatments. From HydraFacial to chemical peels, our
+                medical-grade skincare solutions address all your skin concerns
+                with immediate, visible results.
               </p>
 
               <div className="flex items-center space-x-6 mb-8">
@@ -106,8 +148,12 @@ export default function SkinTreatmentsPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                  <Link href="/book">Book Consultation</Link>
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                >
+                  <Link href="/booking">Book Consultation</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
                   <Link href="/results">View Results</Link>
@@ -121,7 +167,7 @@ export default function SkinTreatmentsPage() {
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                   style={{
                     backgroundImage:
-                      "url(/placeholder.svg?height=500&width=600&query=hydrafacial treatment glowing skin professional spa)",
+                      "url(https://unsplash.com/photos/HXsYayB33a8/download?force=true&query=hydrafacial treatment glowing skin professional spa)",
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
@@ -135,16 +181,22 @@ export default function SkinTreatmentsPage() {
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">Advanced Skin Treatments</h2>
+            <h2 className="text-4xl font-bold text-foreground mb-6">
+              Advanced Skin Treatments
+            </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Choose from our comprehensive range of medical-grade skincare treatments, each designed to address
-              specific skin concerns and deliver exceptional results.
+              Choose from our comprehensive range of medical-grade skincare
+              treatments, each designed to address specific skin concerns and
+              deliver exceptional results.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {treatments.map((treatment, index) => (
-              <Card key={treatment.name} className="border-0 shadow-lg overflow-hidden group">
+              <Card
+                key={treatment.name}
+                className="border-0 shadow-lg overflow-hidden group"
+              >
                 <div className="relative h-48 overflow-hidden">
                   <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-110"
@@ -157,34 +209,59 @@ export default function SkinTreatmentsPage() {
                 </div>
 
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-semibold text-foreground mb-3">{treatment.name}</h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">{treatment.description}</p>
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
+                    {treatment.name}
+                  </h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {treatment.description}
+                  </p>
 
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">Duration</div>
-                      <div className="font-medium text-foreground">{treatment.duration}</div>
+                      <div className="text-sm text-muted-foreground mb-1">
+                        Duration
+                      </div>
+                      <div className="font-medium text-foreground">
+                        {treatment.duration}
+                      </div>
                     </div>
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">Starting Price</div>
-                      <div className="font-medium text-primary">{treatment.price}</div>
+                      <div className="text-sm text-muted-foreground mb-1">
+                        Starting Price
+                      </div>
+                      <div className="font-medium text-primary">
+                        {treatment.price}
+                      </div>
                     </div>
                   </div>
 
                   <div className="mb-6">
-                    <div className="text-sm text-muted-foreground mb-2">Key Benefits:</div>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Key Benefits:
+                    </div>
                     <div className="grid grid-cols-2 gap-2">
                       {treatment.benefits.map((benefit) => (
-                        <div key={benefit} className="flex items-center space-x-2">
+                        <div
+                          key={benefit}
+                          className="flex items-center space-x-2"
+                        >
                           <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                          <span className="text-sm text-foreground">{benefit}</span>
+                          <span className="text-sm text-foreground">
+                            {benefit}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                    <Link href="/book" className="flex items-center justify-center space-x-2">
+                  <Button
+                    asChild
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                  >
+                    <Link
+                      href="/booking"
+                      className="flex items-center justify-center space-x-2"
+                    >
                       <span>Book This Treatment</span>
                       <ArrowRight className="w-4 h-4" />
                     </Link>
@@ -206,7 +283,7 @@ export default function SkinTreatmentsPage() {
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                   style={{
                     backgroundImage:
-                      "url(/placeholder.svg?height=500&width=600&query=hydrafacial machine treatment process professional)",
+                      "url(https://unsplash.com/photos/HXsYayB33a8/download?force=true&query=hydrafacial machine treatment process professional)",
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
@@ -216,13 +293,18 @@ export default function SkinTreatmentsPage() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Sparkles className="w-6 h-6 text-primary" />
-                <Badge className="bg-primary text-primary-foreground">Featured Treatment</Badge>
+                <Badge className="bg-primary text-primary-foreground">
+                  Featured Treatment
+                </Badge>
               </div>
-              <h2 className="text-4xl font-bold text-foreground mb-6">The HydraFacial Difference</h2>
+              <h2 className="text-4xl font-bold text-foreground mb-6">
+                The HydraFacial Difference
+              </h2>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Experience the world's most advanced facial treatment that delivers instant results with no downtime.
-                HydraFacial combines cleansing, exfoliation, extraction, hydration, and antioxidant protection in one
-                treatment.
+                Experience the world's most advanced facial treatment that
+                delivers instant results with no downtime. HydraFacial combines
+                cleansing, exfoliation, extraction, hydration, and antioxidant
+                protection in one treatment.
               </p>
 
               <div className="space-y-4 mb-8">
@@ -231,8 +313,12 @@ export default function SkinTreatmentsPage() {
                     <span className="text-primary font-bold text-sm">1</span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Cleanse & Peel</h3>
-                    <p className="text-muted-foreground text-sm">Gentle exfoliation reveals fresh, healthy skin</p>
+                    <h3 className="font-semibold text-foreground mb-1">
+                      Cleanse & Peel
+                    </h3>
+                    <p className="text-muted-foreground text-sm">
+                      Gentle exfoliation reveals fresh, healthy skin
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -240,7 +326,9 @@ export default function SkinTreatmentsPage() {
                     <span className="text-primary font-bold text-sm">2</span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Extract & Hydrate</h3>
+                    <h3 className="font-semibold text-foreground mb-1">
+                      Extract & Hydrate
+                    </h3>
                     <p className="text-muted-foreground text-sm">
                       Painless extraction removes impurities while hydrating
                     </p>
@@ -251,14 +339,22 @@ export default function SkinTreatmentsPage() {
                     <span className="text-primary font-bold text-sm">3</span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Fuse & Protect</h3>
-                    <p className="text-muted-foreground text-sm">Antioxidants and peptides maximize your glow</p>
+                    <h3 className="font-semibold text-foreground mb-1">
+                      Fuse & Protect
+                    </h3>
+                    <p className="text-muted-foreground text-sm">
+                      Antioxidants and peptides maximize your glow
+                    </p>
                   </div>
                 </div>
               </div>
 
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                <Link href="/book">Book HydraFacial</Link>
+              <Button
+                asChild
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              >
+                <Link href="/booking">Book HydraFacial</Link>
               </Button>
             </div>
           </div>
@@ -269,13 +365,21 @@ export default function SkinTreatmentsPage() {
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">Frequently Asked Questions</h2>
-            <p className="text-xl text-muted-foreground">Get answers to common questions about our skin treatments.</p>
+            <h2 className="text-4xl font-bold text-foreground mb-6">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Get answers to common questions about our skin treatments.
+            </p>
           </div>
 
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="bg-white rounded-lg border-0 shadow-sm">
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="bg-white rounded-lg border-0 shadow-sm"
+              >
                 <AccordionTrigger className="px-6 py-4 text-left font-semibold text-foreground hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
@@ -293,12 +397,17 @@ export default function SkinTreatmentsPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready for Radiant Skin?</h2>
           <p className="text-xl mb-8 opacity-90">
-            Transform your skin with our advanced treatments. Book your consultation today and discover the perfect
-            skincare solution for you.
+            Transform your skin with our advanced treatments. Book your
+            consultation today and discover the perfect skincare solution for
+            you.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-              <Link href="/book">Book Free Consultation</Link>
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90"
+            >
+              <Link href="/booking">Book Free Consultation</Link>
             </Button>
             <Button
               asChild
@@ -312,5 +421,5 @@ export default function SkinTreatmentsPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

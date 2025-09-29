@@ -119,7 +119,7 @@ export default function IVTherapyPage() {
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                   style={{
                     backgroundImage:
-                      "url(/placeholder.svg?height=500&width=600&query=african woman wellness iv therapy relaxation spa treatment)",
+                      "url(https://unsplash.com/photos/KK6Nx7VXzYs/download?force=true)",
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />

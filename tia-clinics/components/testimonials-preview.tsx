@@ -13,7 +13,7 @@ const testimonials = [
     treatment: "Botox & Fillers",
     rating: 5,
     text: "Dr. Arshni and her team are absolutely incredible. The results from my Botox treatment exceeded my expectations, and I felt comfortable throughout the entire process. The clinic is beautiful and professional.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "https://unsplash.com/photos/_OykiNSux5g/download?force=true",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const testimonials = [
     treatment: "Hair Restoration",
     rating: 5,
     text: "After struggling with hair loss for years, the PRP treatment at TIA Clinics has given me my confidence back. The results are natural and impressive. Highly recommend their expertise.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "https://unsplash.com/photos/_OykiNSux5g/download?force=true",
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const testimonials = [
     treatment: "HydraFacial",
     rating: 5,
     text: "The HydraFacial treatment left my skin glowing and refreshed. The staff is knowledgeable and caring, making every visit a pleasant experience. TIA Clinics is truly world-class.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "https://unsplash.com/photos/_OykiNSux5g/download?force=true",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const testimonials = [
     treatment: "IV Therapy",
     rating: 5,
     text: "The wellness IV drips have boosted my energy levels significantly. The personalized approach and attention to detail at TIA Clinics is unmatched. I feel revitalized after every session.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "https://unsplash.com/photos/_OykiNSux5g/download?force=true",
   },
 ]
 

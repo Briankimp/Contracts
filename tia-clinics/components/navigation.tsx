@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const navigationItems = [
   { name: "Home", href: "/" },
@@ -23,20 +23,20 @@ const navigationItems = [
   { name: "Team", href: "/team" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
-]
+];
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
@@ -48,11 +48,17 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="/images/tia-logo.jpg" alt="TIA Clinics" width={60} height={60} className="rounded-full" />
-            <div className="hidden sm:block">
+            <Image
+              src="/images/tia-logo.jpg"
+              alt="TIA Clinics"
+              width={65}
+              height={65}
+              className="rounded-full"
+            />
+            {/* <div className="hidden sm:block">
               <div className="text-2xl font-bold text-foreground">TIA</div>
               <div className="text-xs text-muted-foreground tracking-wider">CLINICS</div>
-            </div>
+            </div> */}
           </Link>
 
           {/* Desktop Navigation */}
@@ -61,8 +67,14 @@ export default function Navigation() {
               <div key={item.name} className="relative group">
                 <Link
                   href={item.href}
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium flex items-center space-x-1"
-                  onMouseEnter={() => item.submenu && setActiveSubmenu(item.name)}
+                  className={`${
+                    scrolled
+                      ? "text-foreground hover:text-primary"
+                      : "text-white hover:text-white/80"
+                  } transition-colors duration-200 font-medium flex items-center space-x-1`}
+                  onMouseEnter={() =>
+                    item.submenu && setActiveSubmenu(item.name)
+                  }
                   onMouseLeave={() => setActiveSubmenu(null)}
                 >
                   <span>{item.name}</span>
@@ -93,15 +105,22 @@ export default function Navigation() {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              <Link href="/book">Book Consultation</Link>
+            <Button
+              asChild
+              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              <Link href="/booking">Book Consultation</Link>
             </Button>
           </div>
 
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-md text-foreground hover:text-primary transition-colors"
+            className={`lg:hidden p-2 rounded-md transition-colors ${
+              scrolled
+                ? "text-foreground hover:text-primary"
+                : "text-white hover:text-white/80"
+            }`}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -137,8 +156,11 @@ export default function Navigation() {
                 </div>
               ))}
               <div className="pt-4 border-t border-border">
-                <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                  <Link href="/book" onClick={() => setIsOpen(false)}>
+                <Button
+                  asChild
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                >
+                  <Link href="/booking" onClick={() => setIsOpen(false)}>
                     Book Consultation
                   </Link>
                 </Button>
@@ -148,5 +170,5 @@ export default function Navigation() {
         )}
       </div>
     </nav>
-  )
+  );
 }

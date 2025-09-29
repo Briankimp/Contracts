@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play, Star } from "lucide-react"
 
@@ -37,7 +38,7 @@ export default function HeroSection() {
   }, [heroSlides.length])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden z-0">
       {/* Background Slides */}
       <div className="absolute inset-0">
         {heroSlides.map((slide, index) => (
@@ -47,9 +48,14 @@ export default function HeroSection() {
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${slide.image})` }}
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              priority={index === 0}
+              quality={95}
+              sizes="100vw"
+              className="object-cover object-[center_20%]"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
           </div>
@@ -57,7 +63,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
         <div className="animate-fade-in-up">
           {/* Trust Indicators */}
           <div className="flex items-center justify-center space-x-1 mb-6">

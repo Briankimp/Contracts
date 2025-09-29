@@ -1,16 +1,19 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Phone, MessageCircle } from "lucide-react"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Phone, MessageCircle } from "lucide-react";
 
 export default function CTASection() {
   return (
     <section className="py-24 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">Ready to Transform Your Beauty?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+            Ready to Transform Your Beauty?
+          </h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto text-pretty leading-relaxed opacity-90">
-            Take the first step towards your aesthetic goals. Book a personalized consultation with our expert medical
-            team and discover the perfect treatment plan for you.
+            Take the first step towards your aesthetic goals. Book a
+            personalized consultation with our expert medical team and discover
+            the perfect treatment plan for you.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12">
@@ -19,7 +22,7 @@ export default function CTASection() {
               size="lg"
               className="bg-white text-primary hover:bg-white/90 px-8 py-4 text-lg font-semibold rounded-full"
             >
-              <Link href="/book" className="flex items-center space-x-2">
+              <Link href="/booking" className="flex items-center space-x-2">
                 <span>Book Free Consultation</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
@@ -32,7 +35,10 @@ export default function CTASection() {
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-primary px-6 py-4 rounded-full bg-transparent"
               >
-                <Link href="tel:+254782777779" className="flex items-center space-x-2">
+                <Link
+                  href="tel:+254782777779"
+                  className="flex items-center space-x-2"
+                >
                   <Phone className="w-5 h-5" />
                   <span>Call Now</span>
                 </Link>
@@ -44,7 +50,10 @@ export default function CTASection() {
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-primary px-6 py-4 rounded-full bg-transparent"
               >
-                <Link href="https://wa.me/254782777779" className="flex items-center space-x-2">
+                <Link
+                  href="https://wa.me/254782777779"
+                  className="flex items-center space-x-2"
+                >
                   <MessageCircle className="w-5 h-5" />
                   <span>WhatsApp</span>
                 </Link>
@@ -69,5 +78,5 @@ export default function CTASection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

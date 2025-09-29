@@ -119,7 +119,7 @@ export default function HairRestorationPage() {
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                   style={{
                     backgroundImage:
-                      "url(/placeholder.svg?height=500&width=600&query=african woman beautiful healthy hair restoration treatment)",
+                      "url(https://unsplash.com/photos/q2ymQc-u5ig/download?force=trueestoration treatment)",
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />

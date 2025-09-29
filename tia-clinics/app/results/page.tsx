@@ -1,11 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, ArrowRight, Filter, Eye, Calendar, User } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Filter,
+  Eye,
+  Calendar,
+  User,
+} from "lucide-react";
 
 const filters = [
   { id: "all", label: "All Results", count: 48 },
@@ -14,141 +21,196 @@ const filters = [
   { id: "hair", label: "Hair Restoration", count: 8 },
   { id: "body", label: "Body Contouring", count: 6 },
   { id: "iv", label: "IV Therapy", count: 4 },
-]
+];
 
 const results = [
   {
     id: 1,
-    category: "injectables",
     treatment: "Botox & Dermal Fillers",
+    category: "injectables",
     timeframe: "3 months post-treatment",
     gender: "Female",
     age: "35-40",
-    before: "/placeholder.svg?height=400&width=300",
-    after: "/placeholder.svg?height=400&width=300",
+    before: "https://unsplash.com/photos/du5DXklQxgI/download?force=true",
+    after: "https://unsplash.com/photos/87InWldRhgs/download?force=true",
     description:
       "Natural-looking facial rejuvenation with Botox for forehead lines and dermal fillers for cheek enhancement.",
-    results: ["Smoother forehead", "Enhanced cheek volume", "Natural appearance", "Increased confidence"],
+    results: [
+      "Smoother forehead",
+      "Enhanced cheek volume",
+      "Natural appearance",
+      "Increased confidence",
+    ],
   },
   {
     id: 2,
-    category: "skin",
     treatment: "HydraFacial Series",
+    category: "skin",
     timeframe: "After 4 sessions",
     gender: "Female",
     age: "28-32",
-    before: "/placeholder.svg?height=400&width=300",
-    after: "/placeholder.svg?height=400&width=300",
+    before: "https://unsplash.com/photos/Vvp3RZZYS-Q/download?force=true",
+    after: "https://unsplash.com/photos/y2T5hT7pWx4/download?force=true",
     description:
       "Comprehensive skin transformation through monthly HydraFacial treatments addressing acne and texture.",
-    results: ["Clearer complexion", "Improved texture", "Reduced acne", "Glowing skin"],
+    results: [
+      "Clearer complexion",
+      "Improved texture",
+      "Reduced acne",
+      "Glowing skin",
+    ],
   },
   {
     id: 3,
-    category: "hair",
     treatment: "PRP Hair Restoration",
+    category: "hair",
     timeframe: "6 months post-treatment",
     gender: "Male",
     age: "40-45",
-    before: "/placeholder.svg?height=400&width=300",
-    after: "/placeholder.svg?height=400&width=300",
-    description: "Significant hair regrowth achieved through PRP therapy sessions targeting male pattern baldness.",
-    results: ["Increased hair density", "New hair growth", "Stronger hair", "Restored confidence"],
+    before: "https://unsplash.com/photos/NWr0IHXHTZo/download?force=true",
+    after: "https://unsplash.com/photos/g-m8EDc4X6Q/download?force=true",
+    description:
+      "Significant hair regrowth achieved through PRP therapy sessions targeting male pattern baldness.",
+    results: [
+      "Increased hair density",
+      "New hair growth",
+      "Stronger hair",
+      "Restored confidence",
+    ],
   },
   {
     id: 4,
-    category: "body",
     treatment: "Body Contouring",
+    category: "body",
     timeframe: "3 months post-treatment",
     gender: "Female",
     age: "30-35",
-    before: "/placeholder.svg?height=400&width=300",
-    after: "/placeholder.svg?height=400&width=300",
-    description: "Non-surgical body sculpting targeting stubborn fat areas with advanced contouring technology.",
-    results: ["Reduced fat deposits", "Improved contours", "Tighter skin", "Enhanced silhouette"],
+    before: "https://unsplash.com/photos/qQII3iCTV9o/download?force=true",
+    after: "https://unsplash.com/photos/Jd59gvlwn_M/download?force=true",
+    description:
+      "Non-surgical body sculpting targeting stubborn fat areas with advanced contouring technology.",
+    results: [
+      "Reduced fat deposits",
+      "Improved contours",
+      "Tighter skin",
+      "Enhanced silhouette",
+    ],
   },
   {
     id: 5,
-    category: "injectables",
     treatment: "Lip Enhancement",
+    category: "injectables",
     timeframe: "2 weeks post-treatment",
     gender: "Female",
     age: "25-30",
-    before: "/placeholder.svg?height=400&width=300",
-    after: "/placeholder.svg?height=400&width=300",
-    description: "Subtle lip augmentation using hyaluronic acid fillers for natural volume and definition.",
-    results: ["Fuller lips", "Better definition", "Natural appearance", "Balanced proportions"],
+    before: "https://unsplash.com/photos/0Ik0xzhUTZw/download?force=true",
+    after: "https://unsplash.com/photos/Vc51AwcUq3Y/download?force=true",
+    description:
+      "Subtle lip augmentation using hyaluronic acid fillers for natural volume and definition.",
+    results: [
+      "Fuller lips",
+      "Better definition",
+      "Natural appearance",
+      "Balanced proportions",
+    ],
   },
   {
     id: 6,
+    treatment: "Chemical Peel",
     category: "skin",
-    treatment: "Chemical Peel Series",
     timeframe: "After 3 treatments",
     gender: "Female",
     age: "45-50",
-    before: "/placeholder.svg?height=400&width=300",
-    after: "/placeholder.svg?height=400&width=300",
-    description: "Progressive improvement in skin tone and texture through professional chemical peel treatments.",
-    results: ["Even skin tone", "Reduced pigmentation", "Smoother texture", "Youthful glow"],
+    before: "https://unsplash.com/photos/_aWzq1pDoEU/download?force=true",
+    after: "https://unsplash.com/photos/0Ik0xzhUTZw/download?force=true",
+    description:
+      "Progressive improvement in skin tone and texture through professional chemical peel treatments.",
+    results: [
+      "Even skin tone",
+      "Reduced pigmentation",
+      "Smoother texture",
+      "Youthful glow",
+    ],
   },
   {
     id: 7,
+    treatment: "Female Hair Restoration",
     category: "hair",
-    treatment: "Hair PRP Therapy",
     timeframe: "4 months post-treatment",
     gender: "Female",
     age: "38-42",
-    before: "/placeholder.svg?height=400&width=300",
-    after: "/placeholder.svg?height=400&width=300",
-    description: "Female hair loss treatment using PRP therapy to stimulate natural hair growth and thickness.",
-    results: ["Thicker hair", "Reduced hair loss", "New growth", "Improved volume"],
+    before: "https://unsplash.com/photos/Vc51AwcUq3Y/download?force=true",
+    after: "https://unsplash.com/photos/Jd59gvlwn_M/download?force=true",
+    description:
+      "Female hair loss treatment using PRP therapy to stimulate natural hair growth and thickness.",
+    results: [
+      "Thicker hair",
+      "Reduced hair loss",
+      "New growth",
+      "Improved volume",
+    ],
   },
   {
     id: 8,
+    treatment: "Male Profile Enhancement",
     category: "injectables",
-    treatment: "Profile Harmonization",
     timeframe: "1 month post-treatment",
     gender: "Male",
     age: "32-37",
-    before: "/placeholder.svg?height=400&width=300",
-    after: "/placeholder.svg?height=400&width=300",
-    description: "Comprehensive facial balancing using strategic filler placement for masculine enhancement.",
-    results: ["Defined jawline", "Balanced features", "Masculine appeal", "Natural enhancement"],
+    before: "https://unsplash.com/photos/qQII3iCTV9o/download?force=true",
+    after: "https://unsplash.com/photos/Jd59gvlwn_M/download?force=true",
+    description:
+      "Comprehensive facial balancing using strategic filler placement for masculine enhancement.",
+    results: [
+      "Defined jawline",
+      "Balanced features",
+      "Masculine appeal",
+      "Natural enhancement",
+    ],
   },
-]
+];
 
 export default function ResultsPage() {
-  const [activeFilter, setActiveFilter] = useState("all")
-  const [selectedResult, setSelectedResult] = useState<(typeof results)[0] | null>(null)
-  const [sliderPosition, setSliderPosition] = useState(50)
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [selectedResult, setSelectedResult] = useState<
+    (typeof results)[0] | null
+  >(null);
+  const [sliderPosition, setSliderPosition] = useState(50);
 
   const filteredResults =
-    activeFilter === "all" ? results : results.filter((result) => result.category === activeFilter)
+    activeFilter === "all"
+      ? results
+      : results.filter((result) => result.category === activeFilter);
 
   const openModal = (result: (typeof results)[0]) => {
-    setSelectedResult(result)
-    setSliderPosition(50)
-  }
+    setSelectedResult(result);
+    setSliderPosition(50);
+  };
 
   const closeModal = () => {
-    setSelectedResult(null)
-  }
+    setSelectedResult(null);
+  };
 
   const nextResult = () => {
-    if (!selectedResult) return
-    const currentIndex = filteredResults.findIndex((r) => r.id === selectedResult.id)
-    const nextIndex = (currentIndex + 1) % filteredResults.length
-    setSelectedResult(filteredResults[nextIndex])
-    setSliderPosition(50)
-  }
+    if (!selectedResult) return;
+    const currentIndex = filteredResults.findIndex(
+      (r) => r.id === selectedResult.id
+    );
+    const nextIndex = (currentIndex + 1) % filteredResults.length;
+    setSelectedResult(filteredResults[nextIndex]);
+    setSliderPosition(50);
+  };
 
   const prevResult = () => {
-    if (!selectedResult) return
-    const currentIndex = filteredResults.findIndex((r) => r.id === selectedResult.id)
-    const prevIndex = (currentIndex - 1 + filteredResults.length) % filteredResults.length
-    setSelectedResult(filteredResults[prevIndex])
-    setSliderPosition(50)
-  }
+    if (!selectedResult) return;
+    const currentIndex = filteredResults.findIndex(
+      (r) => r.id === selectedResult.id
+    );
+    const prevIndex =
+      (currentIndex - 1 + filteredResults.length) % filteredResults.length;
+    setSelectedResult(filteredResults[prevIndex]);
+    setSliderPosition(50);
+  };
 
   return (
     <div className="min-h-screen pt-20">
@@ -156,16 +218,23 @@ export default function ResultsPage() {
       <section className="py-24 bg-gradient-to-br from-accent to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-fade-in-up">
-            <Badge className="mb-4 bg-primary text-primary-foreground">Real Transformations</Badge>
+            <Badge className="mb-4 bg-primary text-primary-foreground">
+              Real Transformations
+            </Badge>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
               Exceptional Results Gallery
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 text-pretty leading-relaxed">
-              Witness the remarkable transformations achieved by our expert team. Each result represents our commitment
-              to excellence and our clients' journey to enhanced confidence and natural beauty.
+              Witness the remarkable transformations achieved by our expert
+              team. Each result represents our commitment to excellence and our
+              clients' journey to enhanced confidence and natural beauty.
             </p>
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              <Link href="/book">Start Your Transformation</Link>
+            <Button
+              asChild
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              <Link href="/booking">Start Your Transformation</Link>
             </Button>
           </div>
         </div>
@@ -177,7 +246,9 @@ export default function ResultsPage() {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-2">
               <Filter className="w-5 h-5 text-muted-foreground" />
-              <span className="text-foreground font-medium">Filter Results</span>
+              <span className="text-foreground font-medium">
+                Filter Results
+              </span>
             </div>
             <div className="text-sm text-muted-foreground">
               Showing {filteredResults.length} of {results.length} results
@@ -222,7 +293,9 @@ export default function ResultsPage() {
 
                   {/* Overlay Info */}
                   <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
-                    <Badge className="bg-primary text-primary-foreground text-xs">{result.treatment}</Badge>
+                    <Badge className="bg-primary text-primary-foreground text-xs">
+                      {result.treatment}
+                    </Badge>
                     <div className="bg-white/90 rounded-full p-2">
                       <Eye className="w-4 h-4 text-foreground" />
                     </div>
@@ -245,8 +318,12 @@ export default function ResultsPage() {
                 </div>
 
                 <CardContent className="p-4">
-                  <h3 className="font-semibold text-foreground mb-2 line-clamp-1">{result.treatment}</h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">{result.description}</p>
+                  <h3 className="font-semibold text-foreground mb-2 line-clamp-1">
+                    {result.treatment}
+                  </h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {result.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -262,10 +339,17 @@ export default function ResultsPage() {
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-foreground mb-1">{selectedResult.treatment}</h2>
-                  <p className="text-muted-foreground">{selectedResult.timeframe}</p>
+                  <h2 className="text-2xl font-bold text-foreground mb-1">
+                    {selectedResult.treatment}
+                  </h2>
+                  <p className="text-muted-foreground">
+                    {selectedResult.timeframe}
+                  </p>
                 </div>
-                <button onClick={closeModal} className="p-2 hover:bg-secondary rounded-full transition-colors">
+                <button
+                  onClick={closeModal}
+                  className="p-2 hover:bg-secondary rounded-full transition-colors"
+                >
                   <ArrowLeft className="w-6 h-6" />
                 </button>
               </div>
@@ -277,7 +361,9 @@ export default function ResultsPage() {
                     {/* Before Image */}
                     <div
                       className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                      style={{ backgroundImage: `url(${selectedResult.before})` }}
+                      style={{
+                        backgroundImage: `url(${selectedResult.before})`,
+                      }}
                     />
 
                     {/* After Image with Clip Path */}
@@ -294,21 +380,31 @@ export default function ResultsPage() {
                       className="absolute top-0 bottom-0 w-1 bg-primary cursor-ew-resize z-10"
                       style={{ left: `${sliderPosition}%` }}
                       onMouseDown={(e) => {
-                        const rect = e.currentTarget.parentElement?.getBoundingClientRect()
-                        if (!rect) return
+                        const rect =
+                          e.currentTarget.parentElement?.getBoundingClientRect();
+                        if (!rect) return;
 
                         const handleMouseMove = (e: MouseEvent) => {
-                          const newPosition = ((e.clientX - rect.left) / rect.width) * 100
-                          setSliderPosition(Math.max(0, Math.min(100, newPosition)))
-                        }
+                          const newPosition =
+                            ((e.clientX - rect.left) / rect.width) * 100;
+                          setSliderPosition(
+                            Math.max(0, Math.min(100, newPosition))
+                          );
+                        };
 
                         const handleMouseUp = () => {
-                          document.removeEventListener("mousemove", handleMouseMove)
-                          document.removeEventListener("mouseup", handleMouseUp)
-                        }
+                          document.removeEventListener(
+                            "mousemove",
+                            handleMouseMove
+                          );
+                          document.removeEventListener(
+                            "mouseup",
+                            handleMouseUp
+                          );
+                        };
 
-                        document.addEventListener("mousemove", handleMouseMove)
-                        document.addEventListener("mouseup", handleMouseUp)
+                        document.addEventListener("mousemove", handleMouseMove);
+                        document.addEventListener("mouseup", handleMouseUp);
                       }}
                     >
                       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg">
@@ -347,40 +443,64 @@ export default function ResultsPage() {
                 {/* Details */}
                 <div>
                   <div className="mb-6">
-                    <h3 className="text-xl font-semibold text-foreground mb-3">Treatment Details</h3>
-                    <p className="text-muted-foreground leading-relaxed">{selectedResult.description}</p>
+                    <h3 className="text-xl font-semibold text-foreground mb-3">
+                      Treatment Details
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {selectedResult.description}
+                    </p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">Patient</div>
+                      <div className="text-sm text-muted-foreground mb-1">
+                        Patient
+                      </div>
                       <div className="font-medium text-foreground">
                         {selectedResult.gender}, {selectedResult.age}
                       </div>
                     </div>
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">Timeline</div>
-                      <div className="font-medium text-foreground">{selectedResult.timeframe}</div>
+                      <div className="text-sm text-muted-foreground mb-1">
+                        Timeline
+                      </div>
+                      <div className="font-medium text-foreground">
+                        {selectedResult.timeframe}
+                      </div>
                     </div>
                   </div>
 
                   <div className="mb-8">
-                    <h4 className="font-semibold text-foreground mb-3">Key Results Achieved</h4>
+                    <h4 className="font-semibold text-foreground mb-3">
+                      Key Results Achieved
+                    </h4>
                     <div className="grid grid-cols-2 gap-2">
                       {selectedResult.results.map((result, index) => (
-                        <div key={index} className="flex items-center space-x-2">
+                        <div
+                          key={index}
+                          className="flex items-center space-x-2"
+                        >
                           <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
-                          <span className="text-sm text-muted-foreground">{result}</span>
+                          <span className="text-sm text-muted-foreground">
+                            {result}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   <div className="space-y-4">
-                    <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                      <Link href="/book">Book Similar Treatment</Link>
+                    <Button
+                      asChild
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                    >
+                      <Link href="/booking">Book Similar Treatment</Link>
                     </Button>
-                    <Button asChild variant="outline" className="w-full bg-transparent">
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="w-full bg-transparent"
+                    >
                       <Link href="/services">Learn More About Services</Link>
                     </Button>
                   </div>
@@ -394,14 +514,21 @@ export default function ResultsPage() {
       {/* CTA Section */}
       <section className="py-24 bg-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready for Your Own Transformation?</h2>
+          <h2 className="text-4xl font-bold mb-6">
+            Ready for Your Own Transformation?
+          </h2>
           <p className="text-xl mb-8 opacity-90">
-            Join our satisfied clients and experience the confidence that comes with looking and feeling your best.
-            Schedule your consultation today.
+            Join our satisfied clients and experience the confidence that comes
+            with looking and feeling your best. Schedule your consultation
+            today.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
-              <Link href="/book">Book Free Consultation</Link>
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90"
+            >
+              <Link href="/booking">Book Free Consultation</Link>
             </Button>
             <Button
               asChild
@@ -415,5 +542,5 @@ export default function ResultsPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

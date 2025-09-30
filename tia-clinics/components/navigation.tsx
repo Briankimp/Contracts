@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -25,10 +26,32 @@ const navigationItems = [
   { name: "Contact", href: "/contact" },
 ];
 
-export default function Navigation() {
+interface NavigationProps {
+  forceSolid?: boolean;
+}
+
+// Pages with white/light backgrounds that need solid navbar
+const lightBackgroundPages = [
+  '/about',
+  '/team', 
+  '/contact',
+  '/blog',
+  '/results',
+  '/testimonials',
+  '/services',
+  '/booking',
+  '/faq',
+  '/resources'
+];
+
+export default function Navigation({ forceSolid = false }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const pathname = usePathname();
+  
+  // Auto-detect if current page needs solid navbar
+  const needsSolidNav = forceSolid || lightBackgroundPages.some(page => pathname?.startsWith(page));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +64,7 @@ export default function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-transparent"
+needsSolidNav || scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,7 +91,7 @@ export default function Navigation() {
                 <Link
                   href={item.href}
                   className={`${
-                    scrolled
+                    needsSolidNav || scrolled
                       ? "text-foreground hover:text-primary"
                       : "text-white hover:text-white/80"
                   } transition-colors duration-200 font-medium flex items-center space-x-1`}
@@ -117,7 +140,7 @@ export default function Navigation() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`lg:hidden p-2 rounded-md transition-colors ${
-              scrolled
+              needsSolidNav || scrolled
                 ? "text-foreground hover:text-primary"
                 : "text-white hover:text-white/80"
             }`}

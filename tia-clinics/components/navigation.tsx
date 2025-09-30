@@ -48,6 +48,7 @@ export default function Navigation({ forceSolid = false }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
   
   // Auto-detect if current page needs solid navbar
@@ -60,6 +61,46 @@ export default function Navigation({ forceSolid = false }: NavigationProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeout) {
+        clearTimeout(hoverTimeout);
+      }
+    };
+  }, [hoverTimeout]);
+
+  // Helper functions for better hover management
+  const handleMouseEnter = (itemName: string) => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+    setActiveSubmenu(itemName);
+  };
+
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setActiveSubmenu(null);
+    }, 150); // 150ms delay before hiding
+    setHoverTimeout(timeout);
+  };
+
+  const handleSubmenuMouseEnter = (itemName: string) => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+    setActiveSubmenu(itemName);
+  };
+
+  const handleSubmenuMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setActiveSubmenu(null);
+    }, 150); // 150ms delay before hiding
+    setHoverTimeout(timeout);
+  };
 
   return (
     <nav
@@ -96,9 +137,9 @@ needsSolidNav || scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-trans
                       : "text-white hover:text-white/80"
                   } transition-colors duration-200 font-medium flex items-center space-x-1`}
                   onMouseEnter={() =>
-                    item.submenu && setActiveSubmenu(item.name)
+                    item.submenu && handleMouseEnter(item.name)
                   }
-                  onMouseLeave={() => setActiveSubmenu(null)}
+                  onMouseLeave={item.submenu ? handleMouseLeave : undefined}
                 >
                   <span>{item.name}</span>
                   {item.submenu && <ChevronDown className="w-4 h-4" />}
@@ -107,9 +148,9 @@ needsSolidNav || scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-trans
                 {/* Submenu */}
                 {item.submenu && activeSubmenu === item.name && (
                   <div
-                    className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-border py-2 animate-fade-in"
-                    onMouseEnter={() => setActiveSubmenu(item.name)}
-                    onMouseLeave={() => setActiveSubmenu(null)}
+                    className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-border py-2 animate-fade-in"
+                    onMouseEnter={() => handleSubmenuMouseEnter(item.name)}
+                    onMouseLeave={handleSubmenuMouseLeave}
                   >
                     {item.submenu.map((subItem) => (
                       <Link

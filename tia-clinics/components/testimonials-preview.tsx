@@ -54,9 +54,9 @@ export default function TestimonialsPreview() {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">What Our Clients Say</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
+        <div className="text-center mb-16 animate-fade-in-up" style={{ animationDelay: '60ms' }}>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance animate-fade-in-up" style={{ animationDelay: '100ms' }}>What Our Clients Say</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed animate-fade-in" style={{ animationDelay: '140ms' }}>
             Don't just take our word for it. Hear from our satisfied clients who have experienced the TIA Clinics
             difference in their beauty and wellness journey.
           </p>
@@ -64,14 +64,14 @@ export default function TestimonialsPreview() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           {/* Featured Testimonial */}
-          <div className="lg:col-span-2">
-            <Card className="h-full border-0 shadow-xl bg-gradient-to-br from-accent to-white">
+          <div className="lg:col-span-2 animate-fade-in-up-fast" style={{ animationDelay: '120ms' }}>
+            <Card className="h-full border-0 shadow-xl bg-gradient-to-br from-accent to-white animate-fade-in-fast" style={{ animationDelay: '180ms' }}>
               <CardContent className="p-8 lg:p-12">
-                <Quote className="w-12 h-12 text-primary mb-6" />
-                <blockquote className="text-xl lg:text-2xl text-foreground mb-8 leading-relaxed font-light">
+                <Quote className="w-12 h-12 text-primary mb-6 animate-fade-in-up-fast" style={{ animationDelay: '200ms' }} />
+                <blockquote className="text-xl lg:text-2xl text-foreground mb-8 leading-relaxed font-light animate-fade-in-fast" style={{ animationDelay: '220ms' }}>
                   {testimonials[currentTestimonial].text}
                 </blockquote>
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4 animate-fade-in-up-fast" style={{ animationDelay: '240ms' }}>
                   <div
                     className="w-16 h-16 rounded-full bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: `url(${testimonials[currentTestimonial].image})` }}

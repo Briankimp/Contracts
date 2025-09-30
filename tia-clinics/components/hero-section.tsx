@@ -44,9 +44,10 @@ export default function HeroSection() {
         {heroSlides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+              index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+            } animate-fade-in-fast`}
+            style={{ transitionDelay: index === currentSlide ? '0ms' : '80ms' }}
           >
             <Image
               src={slide.image}
@@ -55,8 +56,7 @@ export default function HeroSection() {
               priority={index === 0}
               quality={95}
               sizes="100vw"
-              className="object-cover object-[center_20%]"
-            />
+              className="object-cover object-[center_20%]" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
           </div>
         ))}
@@ -64,28 +64,28 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
-        <div className="animate-fade-in-up">
+        <div className="animate-fade-in-up-fast" style={{ animationDelay: '60ms' }}>
           {/* Trust Indicators */}
-          <div className="flex items-center justify-center space-x-1 mb-6">
+          <div className="flex items-center justify-center space-x-1 mb-6 animate-fade-in-fast" style={{ animationDelay: '100ms' }}>
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-5 h-5 fill-primary text-primary" />
             ))}
             <span className="ml-2 text-white/90 text-sm">Trusted by 2,000+ clients</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 text-balance leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 text-balance leading-tight animate-fade-in-up-fast" style={{ animationDelay: '120ms' }}>
             {heroSlides[currentSlide].title}
           </h1>
 
-          <p className="text-xl md:text-2xl text-white/90 mb-4 font-light text-balance">
+          <p className="text-xl md:text-2xl text-white/90 mb-4 font-light text-balance animate-fade-in-fast" style={{ animationDelay: '160ms' }}>
             {heroSlides[currentSlide].subtitle}
           </p>
 
-          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto text-pretty leading-relaxed">
+          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto text-pretty leading-relaxed animate-fade-in-fast" style={{ animationDelay: '200ms' }}>
             {heroSlides[currentSlide].description}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up-fast" style={{ animationDelay: '240ms' }}>
             <Button
               asChild
               size="lg"
@@ -111,7 +111,7 @@ export default function HeroSection() {
           </div>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
+          <div className="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto animate-fade-in-up-fast" style={{ animationDelay: '280ms' }}>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">2000+</div>
               <div className="text-white/80 text-sm">Happy Clients</div>

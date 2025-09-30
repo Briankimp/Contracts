@@ -31,11 +31,11 @@ export default function ResultsPreview() {
   return (
     <section className="py-24 bg-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
+        <div className="text-center mb-16 animate-fade-in-up-fast" style={{ animationDelay: '60ms' }}>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance animate-fade-in-up-fast" style={{ animationDelay: '100ms' }}>
             Celebrate Your Natural Beauty
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed animate-fade-in-fast" style={{ animationDelay: '140ms' }}>
             At TIA Clinics, we enhance your natural beauty and help you feel confident in your own skin. Our treatments
             are designed to bring out the best version of you.
           </p>
@@ -45,8 +45,8 @@ export default function ResultsPreview() {
           {beautyImages.map((item, index) => (
             <div
               key={item.id}
-              className="relative h-96 rounded-2xl overflow-hidden shadow-lg group animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="relative h-96 rounded-2xl overflow-hidden shadow-lg group animate-fade-in-fast"
+              style={{ animationDelay: `${80 + index * 60}ms` }}
             >
               <img
                 src={item.image || "/placeholder.svg"}

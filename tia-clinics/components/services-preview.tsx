@@ -52,11 +52,11 @@ export default function ServicesPreview() {
   return (
     <section className="py-24 bg-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
+        <div className="text-center mb-16 animate-fade-in-up-fast" style={{ animationDelay: '60ms' }}>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance animate-fade-in-up-fast" style={{ animationDelay: '100ms' }}>
             Comprehensive Aesthetic Solutions
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed animate-fade-in-fast" style={{ animationDelay: '140ms' }}>
             From non-surgical facelifts to advanced wellness therapy, discover our full range of premium treatments
             designed to enhance your natural beauty and well-being.
           </p>
@@ -66,8 +66,8 @@ export default function ServicesPreview() {
           {services.map((service, index) => (
             <Card
               key={service.title}
-              className="group card-hover border-0 shadow-lg overflow-hidden bg-white"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="group card-hover border-0 shadow-lg overflow-hidden bg-white animate-fade-in-up-fast"
+              style={{ animationDelay: `${80 + index * 60}ms` }}
             >
               <div className="relative h-48 overflow-hidden">
                 <div

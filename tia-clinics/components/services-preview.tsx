@@ -67,7 +67,7 @@ export default function ServicesPreview() {
             <Card
               key={service.title}
               className="group card-hover border-0 shadow-lg overflow-hidden bg-white animate-fade-in-up-fast"
-              style={{ animationDelay: `${80 + index * 60}ms` }}
+              style={{ animationDelay: `${100 + index * 50}ms` }}
             >
               <div className="relative h-48 overflow-hidden">
                 <div

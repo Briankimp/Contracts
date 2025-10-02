@@ -1,19 +1,19 @@
-import HeroSection from "@/components/hero-section"
-import ServicesPreview from "@/components/services-preview"
+import ModernHero from "@/components/modern-hero"
+import DynamicFeatures from "@/components/dynamic-features"
+import InteractiveServices from "@/components/interactive-services"
 import AboutPreview from "@/components/about-preview"
-import ResultsPreview from "@/components/results-preview"
-import TestimonialsPreview from "@/components/testimonials-preview"
-import CTASection from "@/components/cta-section"
+import ModernTestimonials from "@/components/modern-testimonials"
+import ModernCTA from "@/components/modern-cta"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
-      <HeroSection />
-      <ServicesPreview />
+    <div className="min-h-screen will-change-transform">
+      <ModernHero />
+      <DynamicFeatures />
+      <InteractiveServices />
       <AboutPreview />
-      <ResultsPreview />
-      <TestimonialsPreview />
-      <CTASection />
+      <ModernTestimonials />
+      <ModernCTA />
     </div>
   )
 }

@@ -125,7 +125,7 @@ needsSolidNav || scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-trans
             </div> */}
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Enhanced Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navigationItems.map((item) => (
               <div key={item.name} className="relative group">
@@ -135,28 +135,38 @@ needsSolidNav || scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-trans
                     needsSolidNav || scrolled
                       ? "text-foreground hover:text-primary"
                       : "text-white hover:text-white/80"
-                  } transition-colors duration-200 font-medium flex items-center space-x-1`}
+                  } ${
+                    pathname === item.href ? "text-primary font-semibold" : ""
+                  } transition-all duration-300 font-medium flex items-center space-x-1 hover-underline relative px-2 py-1 rounded-lg hover:bg-primary/5`}
                   onMouseEnter={() =>
                     item.submenu && handleMouseEnter(item.name)
                   }
                   onMouseLeave={item.submenu ? handleMouseLeave : undefined}
                 >
                   <span>{item.name}</span>
-                  {item.submenu && <ChevronDown className="w-4 h-4" />}
+                  {item.submenu && (
+                    <ChevronDown 
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        activeSubmenu === item.name ? "rotate-180" : ""
+                      }`} 
+                    />
+                  )}
                 </Link>
 
-                {/* Submenu */}
+                {/* Enhanced Submenu */}
                 {item.submenu && activeSubmenu === item.name && (
                   <div
-                    className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-border py-2 animate-fade-in"
+                    className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-primary/10 py-3 animate-fade-in-up z-50"
                     onMouseEnter={() => handleSubmenuMouseEnter(item.name)}
                     onMouseLeave={handleSubmenuMouseLeave}
                   >
-                    {item.submenu.map((subItem) => (
+                    {item.submenu.map((subItem, index) => (
                       <Link
                         key={subItem.name}
                         href={subItem.href}
-                        className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-primary transition-colors"
+                        className={`block px-6 py-3 text-sm text-foreground hover:bg-primary/5 hover:text-primary transition-all duration-200 hover:translate-x-1 ${
+                          pathname === subItem.href ? "text-primary bg-primary/5 font-medium" : ""
+                        } stagger-${index + 1}`}
                       >
                         {subItem.name}
                       </Link>
@@ -167,11 +177,11 @@ needsSolidNav || scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-trans
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* Enhanced CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
             <Button
               asChild
-              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground btn-magnetic rounded-full px-6 py-2 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Link href="/booking">Book Consultation</Link>
             </Button>

@@ -213,28 +213,6 @@ export default function InjectablesPage() {
                 our precision techniques deliver beautiful, lasting results.
               </p>
 
-              {/* Key Stats */}
-              <div className="grid grid-cols-3 gap-6 mb-8">
-                {[
-                  { number: "30min", label: "Average Treatment" },
-                  { number: "98%", label: "Satisfaction Rate" },
-                  { number: "6-18mo", label: "Results Last" },
-                ].map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    className="text-center"
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <div className="text-2xl font-bold text-primary gradient-text mb-1">
-                      {stat.number}
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
 
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                 <motion.div
@@ -290,20 +268,6 @@ export default function InjectablesPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </motion.div>
 
-              {/* Floating Badge */}
-              <motion.div
-                className="absolute -top-6 -right-6 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-white/50"
-                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-              >
-                <div className="text-center">
-                  <Star className="w-8 h-8 text-yellow-500 mx-auto mb-2 fill-current" />
-                  <div className="text-lg font-bold text-primary">4.9/5</div>
-                  <div className="text-xs text-muted-foreground">Rating</div>
-                </div>
-              </motion.div>
             </motion.div>
           </div>
         </div>

@@ -1,72 +1,35 @@
 "use client"
 
-import React, { useRef, useState } from "react"
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion"
-import { Award, Shield, Users, Heart, Sparkles, Star, CheckCircle } from "lucide-react"
+import React, { useRef } from "react"
+import { motion, useInView } from "framer-motion"
+import { Shield, Heart, Star, Stethoscope, GraduationCap } from "lucide-react"
 
 const features = [
   {
-    icon: Award,
+    icon: GraduationCap,
     title: "Medical Excellence",
-    description: "Licensed professionals with international certifications",
-    color: "from-blue-500 to-blue-600",
+    description: "Licensed professionals with international certifications and advanced training",
     delay: 0
   },
   {
     icon: Shield,
-    title: "Safety First",
-    description: "FDA-approved treatments with highest safety standards",
-    color: "from-green-500 to-green-600",
+    title: "Safety First", 
+    description: "FDA-approved treatments with highest safety standards and protocols",
     delay: 0.1
   },
   {
-    icon: Users,
+    icon: Heart,
     title: "Personalized Care",
-    description: "Customized treatment plans for your unique needs",
-    color: "from-purple-500 to-purple-600",
+    description: "Customized treatment plans tailored to your unique aesthetic goals",
     delay: 0.2
   },
   {
-    icon: Heart,
+    icon: Stethoscope,
     title: "Holistic Approach",
-    description: "Combining aesthetics with wellness for complete care",
-    color: "from-pink-500 to-pink-600",
+    description: "Combining medical expertise with wellness for comprehensive care",
     delay: 0.3
   }
 ]
-
-const achievements = [
-  { label: "Happy Clients", value: 2000, suffix: "+", icon: Users },
-  { label: "Success Rate", value: 98, suffix: "%", icon: CheckCircle },
-  { label: "Years Excellence", value: 5, suffix: "+", icon: Award },
-  { label: "Expert Treatments", value: 15, suffix: "+", icon: Sparkles }
-]
-
-function AnimatedCounter({ value, suffix = "", duration = 2 }: { value: number, suffix?: string, duration?: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.5 })
-  const motionValue = useMotionValue(0)
-  const springValue = useSpring(motionValue, { duration: duration * 1000 })
-  const [displayValue, setDisplayValue] = useState(0)
-
-  React.useEffect(() => {
-    if (isInView) {
-      motionValue.set(value)
-    }
-  }, [isInView, motionValue, value])
-
-  React.useEffect(() => {
-    return springValue.onChange((latest) => {
-      setDisplayValue(Math.floor(latest))
-    })
-  }, [springValue])
-
-  return (
-    <span ref={ref}>
-      {displayValue}{suffix}
-    </span>
-  )
-}
 
 export default function DynamicFeatures() {
   const ref = useRef(null)
@@ -161,7 +124,7 @@ export default function DynamicFeatures() {
 
         {/* Features Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={containerVariants}
         >
           {features.map((feature, index) => (
@@ -175,25 +138,25 @@ export default function DynamicFeatures() {
               <div className="relative p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 h-full overflow-hidden">
                 {/* Animated Background */}
                 <motion.div
-                  className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5`}
+                  className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/10 opacity-0 group-hover:opacity-100"
                   transition={{ duration: 0.3 }}
                 />
                 
                 {/* Icon */}
                 <motion.div 
-                  className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${feature.color} mb-6 shadow-lg`}
+                  className="inline-flex p-4 rounded-xl bg-white/90 backdrop-blur-sm border border-white/50 mb-6 shadow-lg"
                   whileHover={{ 
-                    rotate: 360,
-                    scale: 1.1
+                    scale: 1.05,
+                    rotate: 5,
+                    y: -2
                   }}
                   transition={{ 
                     type: "spring", 
-                    stiffness: 300, 
-                    damping: 20,
-                    rotate: { duration: 0.6 }
+                    stiffness: 400, 
+                    damping: 25
                   }}
                 >
-                  <feature.icon className="w-6 h-6 text-white" />
+                  <feature.icon className="w-6 h-6 text-primary" />
                 </motion.div>
                 
                 {/* Content */}
@@ -214,47 +177,6 @@ export default function DynamicFeatures() {
           ))}
         </motion.div>
 
-        {/* Achievement Stats */}
-        <motion.div 
-          className="relative"
-          variants={itemVariants}
-        >
-          <div className="bg-gradient-to-r from-primary/5 via-accent/10 to-primary/5 rounded-3xl p-12 backdrop-blur-sm border border-white/20">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {achievements.map((achievement, index) => (
-                <motion.div
-                  key={achievement.label}
-                  className="text-center group"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: 0.8 + index * 0.1,
-                    type: "spring",
-                    stiffness: 200
-                  }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                >
-                  <motion.div
-                    className="inline-flex p-3 rounded-full bg-primary/10 mb-4 group-hover:bg-primary/20 transition-colors"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <achievement.icon className="w-6 h-6 text-primary" />
-                  </motion.div>
-                  
-                  <div className="text-4xl md:text-5xl font-bold text-foreground mb-2 gradient-text">
-                    <AnimatedCounter value={achievement.value} suffix={achievement.suffix} />
-                  </div>
-                  
-                  <div className="text-muted-foreground font-medium">
-                    {achievement.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
     </motion.section>
   )

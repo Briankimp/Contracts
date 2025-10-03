@@ -234,47 +234,6 @@ export default function ContactPage() {
               personalized care and premium treatments.
             </p>
 
-            {/* Quick Contact Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-              {[
-                { number: "24h", label: "Response Time", icon: Clock },
-                { number: "2000+", label: "Happy Clients", icon: Heart },
-                { number: "98%", label: "Satisfaction Rate", icon: CheckCircle },
-                { number: "5★", label: "Average Rating", icon: Sparkles },
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  className="text-center group"
-                  variants={itemVariants}
-                  whileHover={{ y: -5, scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  <motion.div
-                    className="w-16 h-16 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"
-                    whileHover={{
-                      rotate: 360,
-                      scale: 1.1,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 20,
-                      rotate: { duration: 0.6 },
-                    }}
-                  >
-                    <stat.icon className="w-8 h-8 text-white" />
-                  </motion.div>
-
-                  <div className="text-3xl md:text-4xl font-bold text-primary mb-2 gradient-text">
-                    {stat.number}
-                  </div>
-
-                  <div className="text-sm text-muted-foreground font-medium">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </motion.section>

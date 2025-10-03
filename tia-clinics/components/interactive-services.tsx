@@ -14,7 +14,7 @@ const services = [
     subtitle: "Botox & Dermal Fillers",
     description: "Achieve natural-looking results with our expert injectable treatments. From wrinkle reduction to facial contouring, our precision techniques enhance your features beautifully.",
     features: ["Botox Treatments", "Dermal Fillers", "Profile Harmonization", "Lip Enhancement"],
-    color: "from-purple-500 to-pink-500",
+    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     href: "/services/injectables",
   },
   {
@@ -24,7 +24,7 @@ const services = [
     subtitle: "Advanced Skin Rejuvenation",
     description: "Transform your skin with cutting-edge treatments designed to restore radiance, texture, and youthful vitality through scientifically proven methods.",
     features: ["HydraFacial", "Chemical Peels", "Microneedling", "Skin Resurfacing"],
-    color: "from-blue-500 to-cyan-500",
+    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     href: "/services/skin-treatments",
   },
   {
@@ -34,7 +34,7 @@ const services = [
     subtitle: "PRP & Regenerative Therapy",
     description: "Regain confidence with our advanced hair restoration treatments using your body's natural healing factors for sustainable, natural-looking results.",
     features: ["PRP Therapy", "Hair Transplant", "Scalp Treatments", "Growth Factors"],
-    color: "from-green-500 to-emerald-500",
+    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     href: "/services/hair-restoration",
   },
   {
@@ -44,7 +44,7 @@ const services = [
     subtitle: "Wellness & Nutrition",
     description: "Boost your immunity, energy, and overall wellness with our customized IV drip therapies designed for optimal health and vitality.",
     features: ["Immunity Boost", "Energy Enhancement", "Beauty Drips", "Recovery Therapy"],
-    color: "from-orange-500 to-red-500",
+    image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     href: "/services/iv-therapy",
   },
   {
@@ -54,7 +54,7 @@ const services = [
     subtitle: "Non-Surgical Sculpting",
     description: "Achieve your ideal body shape with our non-invasive body contouring treatments that target stubborn fat and enhance your natural curves.",
     features: ["Fat Reduction", "Skin Tightening", "Cellulite Treatment", "Body Sculpting"],
-    color: "from-indigo-500 to-purple-500",
+    image: "https://images.unsplash.com/photo-1616391182219-e080b4d1043a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     href: "/services/body-contouring",
   },
   {
@@ -64,7 +64,7 @@ const services = [
     subtitle: "Specialized Treatments",
     description: "Expert care for specialized dermatological procedures performed with precision and attention to detail in our state-of-the-art facility.",
     features: ["Keloid Removal", "Skin Tags", "Mole Removal", "Scar Treatment"],
-    color: "from-teal-500 to-blue-500",
+    image: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     href: "/services/minor-procedures",
   },
 ]
@@ -150,151 +150,142 @@ export default function InteractiveServices() {
           </p>
         </motion.div>
 
-        {/* Interactive Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {/* Services List */}
-          <motion.div 
-            className="lg:col-span-1 space-y-4"
-            variants={containerVariants}
-          >
-            {services.map((service, index) => (
-              <motion.div
-                key={service.id}
-                variants={itemVariants}
-                className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 ${
-                  activeService === index 
-                    ? 'bg-white shadow-xl border-2 border-primary/20' 
-                    : 'bg-white/50 backdrop-blur-sm hover:bg-white/80 border border-white/30'
-                }`}
-                onClick={() => setActiveService(index)}
-                onMouseEnter={() => setHoveredService(index)}
-                onMouseLeave={() => setHoveredService(null)}
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="flex items-center space-x-4">
-                  <motion.div 
-                    className={`p-3 rounded-xl bg-gradient-to-br ${service.color} shadow-lg`}
-                    animate={{ 
-                      rotate: hoveredService === index ? 360 : 0,
-                      scale: activeService === index ? 1.1 : 1
-                    }}
-                    transition={{ duration: 0.6 }}
-                  >
-{React.createElement(service.icon, { className: "w-6 h-6 text-white" })}
-                  </motion.div>
-                  
-                  <div className="flex-1">
-                    <h3 className={`font-bold text-lg transition-colors ${
-                      activeService === index ? 'text-primary' : 'text-foreground'
-                    }`}>
-                      {service.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {service.subtitle}
-                    </p>
-                  </div>
-                  
-                  <motion.div
-                    animate={{ 
-                      x: activeService === index ? 5 : 0,
-                      opacity: activeService === index ? 1 : 0.5
-                    }}
-                  >
-                    <ArrowRight className="w-5 h-5 text-primary" />
-                  </motion.div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Service Details */}
-          <motion.div 
-            className="lg:col-span-2"
-            variants={itemVariants}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeService}
-                initial={{ opacity: 0, x: 20, scale: 0.95 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, x: -20, scale: 1.05 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/50 h-full"
-              >
-                <div className="flex items-start justify-between mb-6">
-                  <div>
-                    <motion.div 
-                      className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${services[activeService].color} shadow-lg mb-4`}
-                      whileHover={{ scale: 1.1, rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      {React.createElement(services[activeService].icon, { className: "w-8 h-8 text-white" })}
-                    </motion.div>
-                    
-                    <h3 className="text-3xl font-bold text-foreground mb-2">
-                      {services[activeService].title}
-                    </h3>
-                    <p className="text-lg text-primary font-medium mb-4">
-                      {services[activeService].subtitle}
-                    </p>
-                  </div>
-                  
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <Button
-                      asChild
-                      size="sm"
-                      className="bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-full"
-                    >
-                      <Link href={services[activeService].href}>
-                        <Play className="w-4 h-4" />
-                      </Link>
-                    </Button>
-                  </motion.div>
-                </div>
-
-                <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                  {services[activeService].description}
-                </p>
-
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  {services[activeService].features.map((feature, index) => (
-                    <motion.div
-                      key={feature}
-                      className="flex items-center space-x-3 p-3 bg-white/50 rounded-xl border border-white/30"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      whileHover={{ scale: 1.02, backgroundColor: "rgba(233, 30, 99, 0.05)" }}
-                    >
-                      <div className="w-2 h-2 bg-primary rounded-full" />
-                      <span className="text-foreground font-medium">{feature}</span>
-                    </motion.div>
-                  ))}
-                </div>
-
+        {/* Horizontal Scrollable Services Cards */}
+        <motion.div 
+          className="mb-16"
+          variants={itemVariants}
+        >
+          <div className="overflow-x-auto pb-6">
+            <div className="flex space-x-6 min-w-max px-4">
+              {services.map((service, index) => (
                 <motion.div
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
+                  key={service.id}
+                  variants={itemVariants}
+                  className="flex-shrink-0 w-80 group cursor-pointer"
+                  onClick={() => setActiveService(index)}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg"
-                  >
-                    <Link href={services[activeService].href} className="flex items-center space-x-2">
-                      <span>Learn More</span>
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  </Button>
+                  <div className={`bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border overflow-hidden h-full transition-all duration-300 ${
+                    activeService === index 
+                      ? 'border-primary/50 shadow-2xl' 
+                      : 'border-white/50 hover:border-primary/30'
+                  }`}>
+                    {/* Image Section */}
+                    <div className="relative h-48 overflow-hidden">
+                      <motion.div
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                        style={{ backgroundImage: `url(${service.image})` }}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      
+                      {/* Service Icon */}
+                      <motion.div 
+                        className="absolute top-4 left-4 p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-white/50"
+                        whileHover={{ 
+                          scale: 1.05,
+                          rotate: 5,
+                          y: -2
+                        }}
+                        transition={{ 
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 25
+                        }}
+                      >
+                        {React.createElement(service.icon, { className: "w-5 h-5 text-primary" })}
+                      </motion.div>
+
+                      {/* Active Indicator */}
+                      {activeService === index && (
+                        <motion.div
+                          className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium shadow-lg"
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          Active
+                        </motion.div>
+                      )}
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="p-6">
+                      <h3 className={`text-xl font-bold mb-2 transition-colors ${
+                        activeService === index ? 'text-primary' : 'text-foreground group-hover:text-primary'
+                      }`}>
+                        {service.title}
+                      </h3>
+                      
+                      <p className="text-primary font-medium text-sm mb-3">
+                        {service.subtitle}
+                      </p>
+                      
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
+                        {service.description}
+                      </p>
+
+                      {/* Features Preview */}
+                      <div className="space-y-2 mb-4">
+                        {service.features.slice(0, 2).map((feature, featureIndex) => (
+                          <div key={feature} className="flex items-center space-x-2">
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                            <span className="text-xs text-muted-foreground">{feature}</span>
+                          </div>
+                        ))}
+                        {service.features.length > 2 && (
+                          <div className="text-xs text-primary font-medium">
+                            +{service.features.length - 2} more treatments
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Action Button */}
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <Button
+                          asChild
+                          size="sm"
+                          className={`w-full rounded-full transition-all ${
+                            activeService === index
+                              ? 'bg-primary hover:bg-primary/90 text-primary-foreground'
+                              : 'bg-primary/10 text-primary hover:bg-primary hover:text-white'
+                          }`}
+                        >
+                          <Link href={service.href} className="flex items-center justify-center space-x-2">
+                            <span>Learn More</span>
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
+                        </Button>
+                      </motion.div>
+                    </div>
+                  </div>
                 </motion.div>
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
-        </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div className="flex justify-center mt-4">
+            <div className="flex space-x-2">
+              {services.map((_, index) => (
+                <motion.button
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    activeService === index ? 'bg-primary w-8' : 'bg-primary/30'
+                  }`}
+                  onClick={() => setActiveService(index)}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                />
+              ))}
+            </div>
+          </div>
+        </motion.div>
 
         {/* CTA */}
         <motion.div 

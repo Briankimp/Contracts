@@ -42,8 +42,6 @@ const blogPosts = [
     readTime: "8 min read",
     image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: true,
-    views: "2.1k",
-    likes: "156",
   },
   {
     id: 2,
@@ -56,8 +54,6 @@ const blogPosts = [
     readTime: "6 min read",
     image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: true,
-    views: "1.8k",
-    likes: "142",
   },
   {
     id: 3,
@@ -70,8 +66,6 @@ const blogPosts = [
     readTime: "7 min read",
     image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: false,
-    views: "1.5k",
-    likes: "98",
   },
   {
     id: 4,
@@ -84,8 +78,6 @@ const blogPosts = [
     readTime: "5 min read",
     image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: false,
-    views: "1.2k",
-    likes: "87",
   },
   {
     id: 5,
@@ -98,8 +90,6 @@ const blogPosts = [
     readTime: "6 min read",
     image: "https://images.unsplash.com/photo-1616391182219-e080b4d1043a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: false,
-    views: "2.3k",
-    likes: "178",
   },
   {
     id: 6,
@@ -112,8 +102,6 @@ const blogPosts = [
     readTime: "7 min read",
     image: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: false,
-    views: "1.7k",
-    likes: "134",
   },
 ];
 
@@ -254,46 +242,6 @@ export default function BlogPage() {
               and wellness.
             </p>
 
-            {/* Blog Stats */}
-            <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-              {[
-                { number: "50+", label: "Articles", icon: BookOpen },
-                { number: "10k+", label: "Readers", icon: TrendingUp },
-                { number: "4.9★", label: "Rating", icon: Star },
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  className="text-center group"
-                  variants={itemVariants}
-                  whileHover={{ y: -5, scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  <motion.div
-                    className="w-16 h-16 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"
-                    whileHover={{
-                      rotate: 360,
-                      scale: 1.1,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 20,
-                      rotate: { duration: 0.6 },
-                    }}
-                  >
-                    <stat.icon className="w-8 h-8 text-white" />
-                  </motion.div>
-
-                  <div className="text-3xl md:text-4xl font-bold text-primary mb-2 gradient-text">
-                    {stat.number}
-                  </div>
-
-                  <div className="text-sm text-muted-foreground font-medium">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </motion.section>
@@ -398,17 +346,6 @@ export default function BlogPage() {
                           Featured
                         </motion.div>
 
-                        {/* Stats Overlay */}
-                        <div className="absolute bottom-4 right-4 flex items-center space-x-3 text-white text-sm">
-                          <div className="flex items-center space-x-1">
-                            <Heart className="w-4 h-4" />
-                            <span>{post.likes}</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <TrendingUp className="w-4 h-4" />
-                            <span>{post.views}</span>
-                          </div>
-                        </div>
                       </div>
 
                       <div className="p-8">
@@ -524,13 +461,6 @@ export default function BlogPage() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                             
-                            {/* Stats Overlay */}
-                            <div className="absolute bottom-3 right-3 flex items-center space-x-2 text-white text-xs">
-                              <div className="flex items-center space-x-1">
-                                <Heart className="w-3 h-3" />
-                                <span>{post.likes}</span>
-                              </div>
-                            </div>
                           </div>
 
                           <div className="p-6">

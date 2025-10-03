@@ -78,12 +78,6 @@ const teamMembers = [
   },
 ];
 
-const clinicStats = [
-  { number: "4", label: "Expert Professionals", icon: Users, color: "from-blue-500 to-blue-600" },
-  { number: "25+", label: "Years Combined Experience", icon: Calendar, color: "from-green-500 to-green-600" },
-  { number: "15+", label: "Certifications", icon: Award, color: "from-purple-500 to-purple-600" },
-  { number: "4.9", label: "Average Rating", icon: Star, color: "from-yellow-500 to-orange-500" },
-];
 
 const teamValues = [
   {
@@ -230,42 +224,6 @@ export default function TeamPage() {
               and a commitment to your safety and satisfaction.
             </p>
 
-            {/* Enhanced Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-              {clinicStats.map((stat, index) => (
-                <motion.div 
-                  key={stat.label} 
-                  className="text-center group"
-                  variants={itemVariants}
-                  whileHover={{ y: -5, scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  <motion.div 
-                    className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg`}
-                    whileHover={{ 
-                      rotate: 360,
-                      scale: 1.1
-                    }}
-                    transition={{ 
-                      type: "spring", 
-                      stiffness: 300, 
-                      damping: 20,
-                      rotate: { duration: 0.6 }
-                    }}
-                  >
-                    <stat.icon className="w-8 h-8 text-white" />
-                  </motion.div>
-                  
-                  <div className="text-3xl md:text-4xl font-bold text-primary mb-2 gradient-text">
-                    {stat.number}
-                  </div>
-                  
-                  <div className="text-sm text-muted-foreground font-medium">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </motion.section>

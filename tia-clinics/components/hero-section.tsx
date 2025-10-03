@@ -84,32 +84,6 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {/* Trust Indicators */}
-          <motion.div 
-            className="flex items-center justify-center space-x-1 mb-6"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, rotate: -180 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-              >
-                <Star className="w-5 h-5 fill-primary text-primary" />
-              </motion.div>
-            ))}
-            <motion.span 
-              className="ml-2 text-white/90 text-sm"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 1 }}
-            >
-              Trusted by 2,000+ clients
-            </motion.span>
-          </motion.div>
 
           <AnimatePresence mode="wait">
             <motion.h1 
@@ -202,38 +176,6 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Quick Stats */}
-          <motion.div 
-            className="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            {[
-              { number: "2000+", label: "Happy Clients" },
-              { number: "15+", label: "Expert Treatments" },
-              { number: "5+", label: "Years Excellence" }
-            ].map((stat, index) => (
-              <motion.div 
-                key={stat.label}
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-              >
-                <motion.div 
-                  className="text-3xl md:text-4xl font-bold text-white mb-2"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 200, delay: 1 + index * 0.1 }}
-                >
-                  {stat.number}
-                </motion.div>
-                <div className="text-white/80 text-sm">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
 

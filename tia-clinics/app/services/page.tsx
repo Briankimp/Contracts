@@ -311,177 +311,166 @@ export default function ServicesPage() {
         </div>
       </motion.section>
 
-      {/* Enhanced Services Grid */}
+      {/* Modern Services Showcase */}
       <motion.section 
-        className="py-24 bg-gradient-to-br from-white via-secondary/20 to-accent/10 relative overflow-hidden"
+        className="py-24 bg-white relative"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute top-20 left-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.4, 1],
-              opacity: [0.2, 0.5, 0.2]
-            }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <motion.div 
+            className="text-center mb-16"
+            variants={itemVariants}
+          >
+            <motion.div
+              className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-4 py-2 mb-6"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-primary font-medium text-sm">Our Services</span>
+            </motion.div>
+            
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+              Premium
+              <span className="gradient-text block">Treatment Options</span>
+            </h2>
+            
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Discover our comprehensive range of aesthetic treatments designed to enhance your natural beauty.
+            </p>
+          </motion.div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Clean Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
                 variants={itemVariants}
                 className="group"
-                whileHover={{ y: -12, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                whileHover={{ y: -8 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
               >
-                <Card className="border-0 shadow-xl overflow-hidden bg-white/90 backdrop-blur-sm relative h-full">
-                  {service.popular && (
+                <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 h-full">
+                  {/* Clean Image Header */}
+                  <div className="relative h-56 overflow-hidden">
                     <motion.div
-                      className="absolute top-4 right-4 z-10"
-                      initial={{ scale: 0, rotate: -180 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: 0.5 + index * 0.1, type: "spring", stiffness: 300 }}
-                    >
-                      <Badge className="bg-primary text-primary-foreground shadow-lg">
-                        Most Popular
-                      </Badge>
-                    </motion.div>
-                  )}
-
-                  {/* Enhanced Image Section */}
-                  <div className="relative h-64 overflow-hidden">
-                    <motion.div
-                      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                      className="absolute inset-0 bg-cover bg-center"
                       style={{ backgroundImage: `url(${service.image})` }}
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.6, ease: "easeOut" }}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.7, ease: "easeOut" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     
-                    {/* Animated Service Icon */}
-                    <motion.div 
-                      className={`absolute top-4 left-4 p-4 bg-gradient-to-br ${service.color} rounded-2xl shadow-lg`}
-                      whileHover={{ 
-                        rotate: 360,
-                        scale: 1.1
-                      }}
-                      transition={{ 
-                        type: "spring", 
-                        stiffness: 300, 
-                        damping: 20,
-                        rotate: { duration: 0.6 }
-                      }}
-                    >
-                      <service.icon className="w-6 h-6 text-white" />
-                    </motion.div>
+                    {/* Popular Badge */}
+                    {service.popular && (
+                      <div className="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
+                        Popular
+                      </div>
+                    )}
                     
-                    {/* Service Info Overlay */}
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex items-center justify-between text-white">
-                        <motion.div 
-                          className="flex items-center space-x-1"
-                          whileHover={{ scale: 1.1 }}
-                        >
-                          <Star className="w-4 h-4 fill-current" />
-                          <span className="text-sm font-medium">
-                            {service.rating}
-                          </span>
-                        </motion.div>
-                        <motion.div 
-                          className="flex items-center space-x-1"
-                          whileHover={{ scale: 1.1 }}
-                        >
-                          <Clock className="w-4 h-4" />
-                          <span className="text-sm">{service.duration}</span>
-                        </motion.div>
+                    {/* Service Icon */}
+                    <div className="absolute bottom-4 left-4">
+                      <div className="w-12 h-12 bg-white/95 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg">
+                        <service.icon className="w-6 h-6 text-primary" />
                       </div>
                     </div>
                   </div>
 
-                  <CardContent className="p-6">
-                    <div className="mb-4">
-                      <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
+                  {/* Content Section */}
+                  <div className="p-8">
+                    {/* Header */}
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">
                         {service.title}
                       </h3>
-                      <p className="text-sm text-primary font-medium mb-3">
+                      <p className="text-primary font-medium text-sm mb-3">
                         {service.subtitle}
                       </p>
-                      <p className="text-muted-foreground leading-relaxed">
+                      <p className="text-gray-600 leading-relaxed line-clamp-2">
                         {service.description}
                       </p>
                     </div>
 
-                    {/* Treatment Tags */}
-                    <div className="mb-4">
-                      <h4 className="font-medium text-foreground mb-3">
-                        Treatments Include:
-                      </h4>
+                    {/* Key Treatments */}
+                    <div className="mb-6">
                       <div className="flex flex-wrap gap-2">
-                        {service.treatments.slice(0, 3).map((treatment, treatmentIndex) => (
-                          <motion.div
+                        {service.treatments.slice(0, 3).map((treatment, idx) => (
+                          <span
                             key={treatment}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.8 + treatmentIndex * 0.1 }}
-                            whileHover={{ scale: 1.05 }}
+                            className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full"
                           >
-                            <Badge
-                              variant="secondary"
-                              className="text-xs hover:bg-primary/10 transition-colors"
-                            >
-                              {treatment}
-                            </Badge>
-                          </motion.div>
+                            {treatment}
+                          </span>
                         ))}
                         {service.treatments.length > 3 && (
-                          <Badge variant="secondary" className="text-xs">
+                          <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
                             +{service.treatments.length - 3} more
-                          </Badge>
+                          </span>
                         )}
                       </div>
                     </div>
 
-                    {/* Price */}
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="text-lg font-bold text-primary">
-                        {service.price}
+                    {/* Price & Duration */}
+                    <div className="flex items-center justify-between mb-6 p-4 bg-gray-50 rounded-2xl">
+                      <div>
+                        <div className="text-2xl font-bold text-gray-900">{service.price}</div>
+                        <div className="text-sm text-gray-500">Starting from</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-lg font-semibold text-primary">{service.duration}</div>
+                        <div className="text-sm text-gray-500">Duration</div>
                       </div>
                     </div>
 
-                    {/* CTA Button */}
+                    {/* Action Button */}
                     <motion.div
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <Button
                         asChild
-                        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg"
+                        className="w-full bg-primary hover:bg-primary/90 text-white rounded-2xl py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                       >
-                        <Link
-                          href={service.href}
-                          className="flex items-center justify-center space-x-2"
-                        >
-                          <span>Learn More</span>
-                          <ArrowRight className="w-4 h-4" />
+                        <Link href={service.href} className="flex items-center justify-center space-x-2">
+                          <span>View Details</span>
+                          <ArrowRight className="w-5 h-5" />
                         </Link>
                       </Button>
                     </motion.div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Bottom CTA */}
+          <motion.div 
+            className="text-center mt-16"
+            variants={itemVariants}
+          >
+            <p className="text-lg text-gray-600 mb-8">
+              Not sure which treatment is right for you?
+            </p>
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300"
+              >
+                <Link href="/booking" className="flex items-center space-x-2">
+                  <Heart className="w-5 h-5" />
+                  <span>Book Free Consultation</span>
+                </Link>
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </motion.section>
 
@@ -550,16 +539,15 @@ export default function ServicesPage() {
                   />
                   
                   <motion.div 
-                    className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg`}
+                    className="w-16 h-16 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
                     whileHover={{ 
-                      rotate: 360,
-                      scale: 1.1
+                      scale: 1.05,
+                      y: -3
                     }}
                     transition={{ 
                       type: "spring", 
-                      stiffness: 300, 
-                      damping: 20,
-                      rotate: { duration: 0.6 }
+                      stiffness: 400, 
+                      damping: 25
                     }}
                   >
                     <feature.icon className="w-8 h-8 text-white" />
